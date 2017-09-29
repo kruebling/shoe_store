@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="col-sm-6">
+    <h1><%= @brand.brand() %> </h1>
+
+    <% if @brand.stores().any?() %>
+
+      <h3>Here are all the stores that carry this brand:</h3>
+
+      <ul>
+        <% @brand.stores().each() do |add| %>
+          <li><a href="/store/<%= add.id %>"><%= add.name() %></a></li>
+        <% end %>
+      </ul>
+      <% else %>
+        <p>There are no stores carrying this brand yet.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

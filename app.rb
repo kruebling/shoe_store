@@ -12,7 +12,7 @@ get('/') do
 end
 
 get('/create_store') do
-  @stores = Store.all()
+  @stores = Store.all().sort_by {|sort| sort.name}
   @brands = Brand.all()
   erb(:index)
 end
@@ -24,15 +24,12 @@ post('/create_store') do
       redirect('/create_store')
     else
       erb(:store_error)
-    end
-  @stores = Store.all().sort_by {|sort| sort.name}
-  @brands = Brand.all()
-  erb(:index)
+  end
 end
 
 get('/create_brand') do
   @stores = Store.all()
-  @brands = Brand.all()
+  @brands = Brand.all().sort_by {|sort| sort.brand}
   erb(:index)
 end
 
@@ -44,10 +41,7 @@ post('/create_brand') do
       redirect('/create_brand')
     else
       erb(:brand_error)
-    end
-  @brands = Brand.all().sort_by {|sort| sort.brand}
-  @stores = Store.all()
-  erb(:index)
+  end
 end
 #End Index Routes
 
@@ -82,4 +76,10 @@ patch("/store/:id") do
   @Store.update({:name => rename})
   @Store = Store.all()
   redirect '/'
+end
+
+get('/brand/:id') do
+  @brand = Brand.find(params[:id])
+  @stores = Store.all
+  erb(:brand_info)
 end

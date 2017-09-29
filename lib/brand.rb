@@ -13,9 +13,4 @@ class Brand < ActiveRecord::Base
     end
     self.brand = array.join(' ')
   end
-
-  # def format
-  #   price = self.price.to_s()
-  #   return price + ".00"
-  # end
 end
