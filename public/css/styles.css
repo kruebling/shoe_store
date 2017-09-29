@@ -1,0 +1,19 @@
+.navbar {
+  background-color: rgba(160, 196, 226, 1);
+  height: 100px;
+
+}
+
+.navbar-brand {
+  font-size: 50px;
+  font-family: monospace;
+}
+
+.card {
+  background-color: rgba(198, 219, 240, 1);
+}
+
+body {
+  font-family: monospace;
+  background-color: rgba(207, 232, 239, 1);
+}

@@ -1,0 +1,123 @@
+
+<div class="row">
+  <!-- Add New Store -->
+  <div class="col-sm-6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h1>New Shoe Store:</h1>
+            <form action="/create_store" method="post">
+              <div class="row">
+                <div class="col-sm-7">
+                  <div class="form-group">
+                    <label for="name">Store Name:</label>
+                    <input id="name" name="name" class="form-control" type="text" required>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-info">Create Store</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Add Store -->
+
+  <!-- Add New Brand -->
+  <div class="col-sm-6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h1>New Shoe Brand:</h1>
+            <form action="/create_brand" method="post">
+              <div class="row">
+                <div class="col-sm-7">
+                  <div class="form-group">
+                    <label for="brand">Shoe Brand:</label>
+                    <input id="brand" name="brand" class="form-control" type="text" required>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="form-group">
+                    <label for="price">Shoe Price:</label>
+                    <input id="price" name="price" class="form-control" type="number" required>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success">Create Shoe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Add Brand -->
+</div><br>
+
+
+<div class="row">
+  <!-- Store Table -->
+  <div class="col-sm-6">
+    <% if @stores.any? %>
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-hover table-bordered">
+            <thead class="thead text-dark bg-white">
+              <tr>
+                <th>Store</th>
+                <th>View</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @stores.each do |store| %>
+                <tr class="table-light">
+                  <td class="align-middle"><%= store.name %></td>
+                  <td style="text-align: center;">
+                    <a href="/store/<%= store.id %>">
+                      <button class="btn btn-info btn-block" type="button">View Brands in this Store</button>
+                    </a>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <!-- End Store Table -->
+
+  <!-- Brand Table -->
+  <div class="col-sm-6">
+    <% if @brands.any? %>
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-hover table-bordered">
+            <thead class="thead text-dark bg-white">
+              <tr>
+                <th>Brand</th>
+                <th>View</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @brands.each do |brand| %>
+                <tr class="table-light">
+                  <td class="align-middle"><%= brand.brand %></td>
+                  <td style="text-align: center;">
+                    <a href="/brand/<%= brand.id %>">
+                      <button class="btn btn-success btn-block" type="button">View Stores carrying this Brand</button>
+                    </a>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <!-- End Brand Table -->
+</div>
