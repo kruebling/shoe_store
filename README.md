@@ -10,18 +10,9 @@ _This app allows the user to create stores and shoes. When a store is added, it 
 
 ## Specs
 
-| name   | Describe                                  | Input                                                     | Output             |
-|--------|-------------------------------------------|-----------------------------------------------------------|--------------------|
-| .all   | initial array                             | []                                                        | []                 |
-| clear  | empties the array                         | [word1, word2]                                            | []                 |
-| id     | assigns each word a unique id             | [word1, word2]                                            | [1, 2]             |
-| save   | adds variable to array                    | word  = Word.new("Ruby" "programing language")            | [word]             |
-| delete | changes exisiting word to empty string    | word = Word.new("Michael") word.delete                    | [""]               |
-| sort   | orders list alphabetically by last name   | word = Word.new("Michael" "Keegan") word.sort             | "Keegan" "Michael" |
-
 ## Setup/Installation Requirements
 
-1. git clone https://github.com/kruebling/vocab_words.git into local directory
+1. git clone https://github.com/kruebling/shoe_store into local directory
 2. ruby app.rb inside directory
 3. localhost://4567 in preferred browser
 
