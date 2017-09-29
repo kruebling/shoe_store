@@ -1,0 +1,64 @@
+
+<div class="card">
+
+
+    <div class="col-sm-4">
+      <h1> <%= @store.name() %> </h1>
+      <form action="/store/<%= @store.id() %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <div class="form-group">
+          <label for="rename">Change Store Name</label>
+          <input class="form-control form-control-md" name="rename" id="lgFormGroupInput"><br>
+          <button type="submit" class='btn btn-primary'>Rename Store</button>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="col-sm-3">
+      <form action="/store/<%= @store.id() %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit" class='btn btn-danger'>Delete Store</button>
+      </form>
+    </div><br>
+</div><br>
+
+<!-- Joining Brands and Stores -->
+<div class="card">
+  <div class="col-sm-8">
+    <h1>Available brands:</h1>
+
+    <% if @brands.any?() %>
+      <form action="/add_brand/<%= @store.id %>" method="post">
+        <% @unused_brands.each() do |brand| %>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>"><%= brand.brand() %>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-info">Add Brands</button>
+        <% end %>
+      </form>
+    <% end %><br><br>
+
+    <% if @store.brands().any?() %>
+
+      <h3>Here are all the brands in this store:</h3>
+
+      <ul>
+        <% @store.brands().each() do |add| %>
+          <li><%= add.brand() %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h3>There are no brands in this store yet</h3>
+    <% end %>
+  </div>
+</div><br>
+<!-- End Brand/Store Join -->
+
+
+<div class="col-sm-3">
+  <a href='/'><button type="button" class ="btn btn-primary">Return to Main Page</button></a>
+</div><br>
