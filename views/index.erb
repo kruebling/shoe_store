@@ -99,6 +99,7 @@
             <thead class="thead text-dark bg-white">
               <tr>
                 <th>Brand</th>
+                <th>Price</th>
                 <th>View</th>
               </tr>
             </thead>
@@ -106,6 +107,7 @@
               <% @brands.each do |brand| %>
                 <tr class="table-light">
                   <td class="align-middle"><%= brand.brand %></td>
+                  <td class="align-middle"><%= brand.price %></td>
                   <td style="text-align: center;">
                     <a href="/brand/<%= brand.id %>">
                       <button class="btn btn-success btn-block" type="button">Stores with this Brand</button>

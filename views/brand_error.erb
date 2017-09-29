@@ -1,0 +1,10 @@
+<div class="card">
+  <h1>Error</h1>
+  <% @brand.errors().full_messages().each() do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</div>
+
+<div class="col-sm-3">
+  <a href='/'><button type="button" class ="btn btn-primary">Return to Main Page</button></a>
+</div><br>

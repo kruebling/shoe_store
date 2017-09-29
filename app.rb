@@ -1,4 +1,4 @@
-require("bundler/setup")
+require 'bundler/setup'
 require 'pry'
 Bundler.require(:default)
 
@@ -19,7 +19,12 @@ end
 
 post('/create_store') do
   name = params['name']
-  store = Store.create({:name => name})
+  @store = Store.new({:name => name})
+    if @store.save
+      redirect('/create_store')
+    else
+      erb(:store_error)
+    end
   @stores = Store.all().sort_by {|sort| sort.name}
   @brands = Brand.all()
   erb(:index)
@@ -34,7 +39,12 @@ end
 post('/create_brand') do
   brand = params['brand']
   price = params['price']
-  brand = Brand.create({:brand => brand, :price => price})
+  @brand = Brand.new({:brand => brand, :price => price})
+    if @brand.save
+      redirect('/create_brand')
+    else
+      erb(:brand_error)
+    end
   @brands = Brand.all().sort_by {|sort| sort.brand}
   @stores = Store.all()
   erb(:index)
