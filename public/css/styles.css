@@ -17,3 +17,7 @@ body {
   font-family: monospace;
   background-color: rgba(207, 232, 239, 1);
 }
+
+img {
+  padding-bottom: 10px;
+}
